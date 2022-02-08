@@ -2,13 +2,13 @@
     <div class="rounded-lg p-5 flex-1 bg-gray-50 hover:bg-gray-300 hover:scale-150 break-all transition overflow-hidden" >
         <Type :type="type"/>
         <div class="relative">
-            <img :src="front" alt="" class="block mx-auto w-28 transition-all z-10 relative" :class="{'change': change}">
-            <img :src="front" alt="" class="block mx-auto w-28 blur" >
+            <img :src="currentImg" alt="" class="block mx-auto w-28 transition-all z-10 relative" :class="{'change': change}">
+            <img :src="currentImg" alt="" class="block mx-auto w-28 blur z-0" >
         </div>
         <button 
-        class="bg-gray-200 text-gray-900 rounded-md px-3 py-1 mb-4" 
-        @click="changeImg">
-            <i class="fa-solid fa-arrow-rotate-left"></i> virar
+            class="bg-gray-200 text-gray-900 rounded-md px-3 py-1 mb-4 z-20" 
+            @click="changeImg">
+                <i class="fa-solid fa-arrow-rotate-left"></i> virar
         </button>
         <h3 class="text-2xl text-center font-bold"> {{captalizeName}}</h3>
     </div>
@@ -43,6 +43,7 @@ export default {
     },
     methods: {
         changeImg: function() {
+            console.log('change');
             if(this.isFront) {
                 this.currentImg = this.back;
                 this.isFront = false;

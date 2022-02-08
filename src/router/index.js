@@ -14,7 +14,7 @@ const routes = [
     component: About
   },
   {
-    path: '/pokemons',
+    path: '/pokemons/:id',
     name: 'Pokemons',
     component: About,
     children: [

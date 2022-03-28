@@ -22,7 +22,7 @@
           :back="pokemon.back"
           :type="pokemon.type"
           :url="pokemon.url"
-          :num="index+1"
+          :num="pokemon.id"
           />
       </div>
     </div>
@@ -44,7 +44,7 @@ export default {
     };
   },
   created: async function() {
-    this.pokemons.length === 0 ? this.getPokemons() : '';
+    this.pokemons.length < 1 ? await this.getPokemons() : this.pokemons;
   },
   components: {
     Pokemon,
@@ -76,6 +76,7 @@ export default {
       this.pokemons.forEach( pokemon => {
         axios.get(pokemon.url)
         .then( response => {
+          pokemon.id = response.data.id;
           pokemon.type = response.data.types[0].type.name;
           pokemon.front = response.data.sprites.front_default;
           pokemon.back = response.data.sprites.back_default;

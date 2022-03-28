@@ -1,17 +1,20 @@
 <template>
-    <div class="rounded-lg p-5 flex-1 bg-gray-50 hover:bg-gray-300 hover:scale-150 break-all transition overflow-hidden" >
+    <a :href="'/pokemon/'+ num">
+    <div class="rounded-lg p-5 flex-1 bg-gray-50 hover:bg-gray-300 hover:scale-150 break-all transition overflow-hidden cursor-pointer" >
         <Type :type="type"/>
         <div class="relative">
-            <img :src="currentImg" alt="" class="block mx-auto w-28 transition-all z-10 relative" :class="{'change': change}">
-            <img :src="currentImg" alt="" class="block mx-auto w-28 blur z-0" >
+            <img :src="front" alt="" class="block mx-auto w-28 transition-all z-10 relative" :class="{'change': change}">
+            <img :src="front" alt="" class="block mx-auto w-28 blur z-0" >
         </div>
-        <button 
+        <!-- <button 
             class="bg-gray-200 text-gray-900 rounded-md px-3 py-1 mb-4 z-20" 
             @click="changeImg">
                 <i class="fa-solid fa-arrow-rotate-left"></i> virar
-        </button>
+        </button> -->
         <h3 class="text-2xl text-center font-bold"> {{captalizeName}}</h3>
     </div>
+    </a>
+
 </template>
 
 <script>
@@ -34,7 +37,7 @@ export default {
         type: { type: String, required: true },
         front: { type: String, required: true },
         back: { type: String, required: true },
-        num: Number
+        num: { type: Number, required: true}
     },
     computed: {
         captalizeName: function() {
